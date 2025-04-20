@@ -2,7 +2,7 @@
 
 A voltage and a current noise source for the AC noise analyses in [Micro-cap 12](https://archive.org/details/mc12cd_202110). It allows to inject white ($f^0$) and flicker ($f^{-1}$), shaped noise that is accurate to the real-life performance of devices. This enable very accurate noise simulations.
 
-Inpsired by [Axotron's Blog post](http://axotron.se/blog/voltage-and-current-noise-sources-in-ltspice-noise-simulations/), and the [library for LTspice](https://github.com/yildi1337/LTspiceNoiseSources).
+Inpsired by [Axotron's Blog post](http://axotron.se/blog/voltage-and-current-noise-sources-in-ltspice-noise-simulations/), and the [yildi1337's library for LTspice](https://github.com/yildi1337/LTspiceNoiseSources).
 
 ## Usage
 
@@ -37,9 +37,9 @@ The noise sources are added to the usual components menu.
 
 ## Implementation
 
-For the vnoise source, resistors are used in the simulation to generate some white noise. Their value is calculated from the Johnson–Nyquist equation to generate exactly 1 nV/SQRT Hz of white noise, regardless of the temperature of the simulation. The flicker noise goes through a Laplace transform to shape it to a $-10~\mathrm{dB}/\mathrm{decade}$ curve, while the white noise is simply multiplied by the amplitude.
+For the vnoise source, resistors are used in the simulation to generate some white noise. Their value is calculated from the Johnson–Nyquist equation to generate exactly 1 $\mathrm{nV}/\sqrt{\mathrm{Hz}}$ of white noise, regardless of the temperature of the simulation. The flicker noise goes through a Laplace transform to shape it to a $-10~\mathrm{dB}/\mathrm{decade}$ curve, while the white noise is simply multiplied by the amplitude.
 
-Finally, another Laplace transform is used to generate a bandpass filter that can be use to shape the noise spectral density further.
+Finally, another Laplace transform perform bandpass filtering, which can be used to shape the noise spectral density further.
 
 ![Implementation of the vnoise source.](pictures/vnoise.png)
 
